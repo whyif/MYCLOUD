@@ -9,14 +9,14 @@ app.post('/upload',function(req,res,next){
       }
     
       // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-      let sampleFile = req.files.sampleFile;
+      var sampleFile = req.files.sampleFile;
     
       // Use the mv() method to place the file somewhere on your server
-      sampleFile.mv('C:/Users/limin/Desktop/1.png', function(err) {
+      sampleFile.mv('C:/Users/limin/Desktop/'+req.files.sampleFile.name, function(err) {
         if (err){
           res.send(err);
         }
-        res.send('File uploaded!');
+        res.send('upload successfully!');
       });
 });
 app.use(express.static('www'));
